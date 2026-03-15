@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On De Roof | Admin Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- Admin Login View -->
+    <div id="admin-login-view" class="admin-view active">
+        <div class="login-card glass-card">
+            <div class="text-center">
+                <img src="assets/images/odr-logo.png" alt="ODR Logo" style="height: 50px; filter: grayscale(1) brightness(2); margin-bottom: 1rem;">
+                <h2 style="color: var(--gold); margin-bottom: 2rem;">Admin Portal</h2>
+            </div>
+            <form id="login-form" class="lux-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <input type="text" id="username" required placeholder=" ">
+                    <label for="username">Username (admin)</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" required placeholder=" ">
+                    <label for="password">Password (admin)</label>
+                    <span class="focus-border"></span>
+                </div>
+                <button type="submit" class="btn btn-gold full-width">Sign In</button>
+                <div id="login-error" class="message-box hidden" style="border-left-color: #e74c3c; background: rgba(231, 76, 60, 0.1); color: #e74c3c;"></div>
+            </form>
+            <div class="text-center mt-2">
+                <a href="index.html" class="nav-btn" style="color: var(--text-muted); font-size: 0.8rem;">&larr; Back to Website</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard View -->
+    <div id="admin-dashboard-view" class="admin-view">
+        <nav class="admin-nav">
+            <div class="logo-container">
+                <span style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold);">ODR Admin</span>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="logout()">Logout</button>
+            </div>
+        </nav>
+        
+        <main class="dashboard-container">
+            <div class="dashboard-sidebar glass-card">
+                <ul class="admin-menu">
+                    <li class="active" onclick="switchTab('bookings')">Bookings & Reservations</li>
+                    <li onclick="switchTab('catalog')">Menu Catalog</li>
+                </ul>
+            </div>
+            
+            <div class="dashboard-content">
+                <!-- Bookings Tab -->
+                <div id="tab-bookings" class="tab-content active">
+                    <h2 class="mb-2" style="font-family: var(--font-heading); color: var(--gold);">Recent Bookings</h2>
+                    <div class="table-glass">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Guest Name</th>
+                                    <th>Phone</th>
+                                    <th>Guests</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookings-tbody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Menu Catalog Tab -->
+                <div id="tab-catalog" class="tab-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h2 style="font-family: var(--font-heading); color: var(--gold);">Menu Catalog</h2>
+                        <button class="btn btn-gold" style="padding: 0.5rem 1rem;" onclick="alert('Add Item functionality is mocked.')">+ Add Item</button>
+                    </div>
+                    <div class="table-glass">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="catalog-tbody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
